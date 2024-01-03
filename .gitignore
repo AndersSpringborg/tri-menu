@@ -39,4 +39,4 @@ yarn-error.log*
 .vercel
 
 # typescript
-*.tsbuildinfo
+*index.tsbuildinfo

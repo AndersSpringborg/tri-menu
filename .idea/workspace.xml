@@ -4,30 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="stupid css">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintrc.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postcss.config.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prettier.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/api/root.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/api/routers/post.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/api/trpc.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/db/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/db/schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="idea">
+      <change afterPath="$PROJECT_DIR$/src/components/dateNavigation.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/menu/menu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/spinner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/api/routers/menu.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/isValidDate.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/api/root.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/api/root.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +64,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/Users/anders/projects/trifork/tri-menu",
+    "last_opened_file_path": "/Users/anders/projects/trifork/tri-menu/src/server/api/routers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -88,6 +80,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/server/api/routers" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/backend" />
@@ -96,10 +91,11 @@
       <recent name="$PROJECT_DIR$/pages/index" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/components/menu/menu.tsx" />
+      <recent name="$PROJECT_DIR$/src/components/page.tsx" />
+      <recent name="$PROJECT_DIR$/src/components/dateNavigation.tsx" />
+      <recent name="$PROJECT_DIR$/src/utils/isValidDate.tsx" />
       <recent name="$PROJECT_DIR$/components/audio-player.tsx" />
-      <recent name="$PROJECT_DIR$/services/root.ts" />
-      <recent name="$PROJECT_DIR$/components/date-navigation.tsx" />
-      <recent name="$PROJECT_DIR$/components/spinner.tsx" />
     </key>
   </component>
   <component name="RunManager">
@@ -150,7 +146,7 @@
       <workItem from="1703626296404" duration="2336000" />
       <workItem from="1703685074809" duration="5347000" />
       <workItem from="1703959236518" duration="4085000" />
-      <workItem from="1704308473658" duration="1438000" />
+      <workItem from="1704308473658" duration="2865000" />
     </task>
     <task id="LOCAL-00001" summary="lint and format">
       <option name="closed" value="true" />
@@ -392,7 +388,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703968244257</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1704309973034</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1704309973034</updated>
+    </task>
+    <task id="LOCAL-00032" summary="idea">
+      <option name="closed" value="true" />
+      <created>1704309981374</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1704309981374</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +422,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="no env" />
     <MESSAGE value="cleanup" />
     <MESSAGE value="update" />
     <MESSAGE value="type errors" />
@@ -426,7 +437,6 @@
     <MESSAGE value="better logging" />
     <MESSAGE value=".idea" />
     <MESSAGE value="format" />
-    <MESSAGE value="idea" />
     <MESSAGE value="pnpm lock" />
     <MESSAGE value="no emoji" />
     <MESSAGE value="audio player v1" />
@@ -435,6 +445,8 @@
     <MESSAGE value="shadcn" />
     <MESSAGE value="hav-eller-vej-v1" />
     <MESSAGE value="stupid css" />
-    <option name="LAST_COMMIT_MESSAGE" value="stupid css" />
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="idea" />
   </component>
 </project>
