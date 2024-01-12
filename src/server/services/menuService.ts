@@ -139,7 +139,7 @@ export interface Root {
   languageCount: number;
   level: number;
   nodeName: string;
-  nodeObjectType: any;
+  nodeObjectType: string;
   parentId: number;
   path: number[];
   properties: Properties;
@@ -214,24 +214,24 @@ export interface Properties {
   seoMedia: SeoMedum[];
   seoNoFollow: boolean;
   seoNoIndex: boolean;
-  seoMetaTags: any;
-  umbracoUrlName: any;
+  seoMetaTags: string;
+  umbracoUrlName: string;
   seoH1: string;
   seoPrioritet: number;
-  seoChangeFrequency: any;
-  seoStructuredData: any;
+  seoChangeFrequency: string;
+  seoStructuredData: string;
   colorPrimary: string;
   colorSecondary: string;
-  colorInvert: any;
-  scheme: any;
+  colorInvert: string;
+  scheme: string;
   featuredMedia: FeaturedMedum[];
-  links: any[];
+  links: string[];
   menuLabel: string;
-  hideBackButton: any;
+  hideBackButton: string;
   modules: Module[];
   groups: Group2[];
   menucardDownload: MenucardDownload[];
-  hideGoBackLink: any;
+  hideGoBackLink: string;
   contactTitle: string;
   contactContent: string;
   menucards: Menucard[];
@@ -245,13 +245,13 @@ export interface SeoMedum {
   creatorId: number;
   creatorName: string;
   cultureData: CultureData2;
-  data: any;
+  data: string;
   icon: string;
   id: number;
   languageCount: number;
   level: number;
   nodeName: string;
-  nodeObjectType: any;
+  nodeObjectType: string;
   parentId: number;
   path: number[];
   properties: Properties2;
@@ -259,8 +259,8 @@ export interface SeoMedum {
   sortOrder: number;
   trashed: boolean;
   updatedAt: string;
-  updaterID: any;
-  updaterName: any;
+  updaterID: string;
+  updaterName: string;
   urlSegment: string;
   uuid: string;
   lang: string;
@@ -277,7 +277,7 @@ export interface Default2 {
 
 export interface Properties2 {
   umbracoFile: UmbracoFile;
-  altText: any;
+  altText: string;
   umbracoWidth: number;
   umbracoHeight: number;
   umbracoBytes: number;
@@ -309,13 +309,13 @@ export interface Value {
   creatorId: number;
   creatorName: string;
   cultureData: CultureData3;
-  data: any;
+  data: string;
   icon: string;
   id: number;
   languageCount: number;
   level: number;
   nodeName: string;
-  nodeObjectType: any;
+  nodeObjectType: string;
   parentId: number;
   path: number[];
   properties: Properties4;
@@ -323,8 +323,8 @@ export interface Value {
   sortOrder: number;
   trashed: boolean;
   updatedAt: string;
-  updaterID: any;
-  updaterName: any;
+  updaterID: string;
+  updaterName: string;
   urlSegment: string;
   uuid: string;
   lang: string;
@@ -341,7 +341,7 @@ export interface Default3 {
 
 export interface Properties4 {
   umbracoFile: UmbracoFile2;
-  altText: any;
+  altText: string;
   umbracoWidth: number;
   umbracoHeight: number;
   umbracoBytes: number;
@@ -402,13 +402,13 @@ export interface Value2 {
   creatorId: number;
   creatorName: string;
   cultureData: CultureData4;
-  data: any;
+  data: string;
   icon: string;
   id: number;
   languageCount: number;
   level: number;
   nodeName: string;
-  nodeObjectType: any;
+  nodeObjectType: string;
   parentId: number;
   path: number[];
   properties: Properties7;
@@ -416,8 +416,8 @@ export interface Value2 {
   sortOrder: number;
   trashed: boolean;
   updatedAt: string;
-  updaterID: any;
-  updaterName: any;
+  updaterID: string;
+  updaterName: string;
   urlSegment: string;
   uuid: string;
   lang: string;
@@ -434,7 +434,7 @@ export interface Default4 {
 
 export interface Properties7 {
   umbracoFile: UmbracoFile3;
-  altText: any;
+  altText: string;
   umbracoWidth: number;
   umbracoHeight: number;
   umbracoBytes: number;
@@ -475,13 +475,13 @@ export interface Image {
   creatorId: number;
   creatorName: string;
   cultureData: CultureData5;
-  data: any;
+  data: string;
   icon: string;
   id: number;
   languageCount: number;
   level: number;
   nodeName: string;
-  nodeObjectType: any;
+  nodeObjectType: string;
   parentId: number;
   path: number[];
   properties: Properties8;
@@ -489,8 +489,8 @@ export interface Image {
   sortOrder: number;
   trashed: boolean;
   updatedAt: string;
-  updaterID: any;
-  updaterName: any;
+  updaterID: string;
+  updaterName: string;
   urlSegment: string;
   uuid: string;
   lang: string;
@@ -507,7 +507,7 @@ export interface Default5 {
 
 export interface Properties8 {
   umbracoFile: UmbracoFile4;
-  altText: any;
+  altText: string;
   umbracoWidth: number;
   umbracoHeight: number;
   umbracoBytes: number;
@@ -565,7 +565,7 @@ export interface Group {
 }
 
 export interface Properties11 {
-  cta: any[];
+  cta: string[];
   items: Item[];
   title: string;
   description: string;
@@ -579,7 +579,7 @@ export interface Item {
 }
 
 export interface Properties12 {
-  allergenes: any[];
+  allergenes: string[];
   title: string;
   content: string;
   images: Image2[];
@@ -593,13 +593,13 @@ export interface Image2 {
   creatorId: number;
   creatorName: string;
   cultureData: CultureData6;
-  data: any;
+  data: string;
   icon: string;
   id: number;
   languageCount: number;
   level: number;
   nodeName: string;
-  nodeObjectType: any;
+  nodeObjectType: string;
   parentId: number;
   path: number[];
   properties: Properties13;
@@ -607,8 +607,8 @@ export interface Image2 {
   sortOrder: number;
   trashed: boolean;
   updatedAt: string;
-  updaterID: any;
-  updaterName: any;
+  updaterID: string;
+  updaterName: string;
   urlSegment: string;
   uuid: string;
   lang: string;
@@ -625,7 +625,7 @@ export interface Default6 {
 
 export interface Properties13 {
   umbracoFile: UmbracoFile5;
-  altText: any;
+  altText: string;
   umbracoWidth: number;
   umbracoHeight: number;
   umbracoBytes: number;
@@ -669,13 +669,13 @@ export interface Image3 {
   creatorId: number;
   creatorName: string;
   cultureData: CultureData7;
-  data: any;
+  data: string;
   icon: string;
   id: number;
   languageCount: number;
   level: number;
   nodeName: string;
-  nodeObjectType: any;
+  nodeObjectType: string;
   parentId: number;
   path: number[];
   properties: Properties16;
@@ -683,8 +683,8 @@ export interface Image3 {
   sortOrder: number;
   trashed: boolean;
   updatedAt: string;
-  updaterID: any;
-  updaterName: any;
+  updaterID: string;
+  updaterName: string;
   urlSegment: string;
   uuid: string;
   lang: string;
@@ -701,7 +701,7 @@ export interface Default7 {
 
 export interface Properties16 {
   umbracoFile: UmbracoFile6;
-  altText: any;
+  altText: string;
   umbracoWidth: number;
   umbracoHeight: number;
   umbracoBytes: number;
@@ -778,13 +778,13 @@ export interface MenucardMedum {
   creatorId: number;
   creatorName: string;
   cultureData: CultureData8;
-  data: any;
+  data: string;
   icon: string;
   id: number;
   languageCount: number;
   level: number;
   nodeName: string;
-  nodeObjectType: any;
+  nodeObjectType: string;
   parentId: number;
   path: number[];
   properties: Properties20;
@@ -792,8 +792,8 @@ export interface MenucardMedum {
   sortOrder: number;
   trashed: boolean;
   updatedAt: string;
-  updaterID: any;
-  updaterName: any;
+  updaterID: string;
+  updaterName: string;
   urlSegment: string;
   uuid: string;
   lang: string;

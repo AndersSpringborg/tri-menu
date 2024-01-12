@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
-import React from 'react';
+import { useRouter } from "next/router";
+import React from "react";
 
 interface NavigationProps {
   currentDate: Date;
@@ -9,32 +9,31 @@ interface NavigationProps {
 export const DateNavigation = ({ currentDate }: NavigationProps) => {
   const date = currentDate || new Date();
   const router = useRouter();
-  console.log('navi', currentDate);
-  const handleNextDay = () => {
+  const handleNextDay = async () => {
     const nextDay = new Date(currentDate || Date.now());
     nextDay.setDate(nextDay.getDate() + 1);
-    router.push(
+    await router.push(
       router.pathname + `?date=${nextDay.toISOString().slice(0, 10)}`,
     );
   };
 
-  const handlePrevDay = () => {
+  const handlePrevDay = async () => {
     const prevDay = new Date(currentDate || Date.now());
     prevDay.setDate(prevDay.getDate() - 1);
-    router.push(
+    await router.push(
       router.pathname + `?date=${prevDay.toISOString().slice(0, 10)}`,
     );
   };
 
-  const handleToday = () => {
-    router.push(
+  const handleToday = async () => {
+    await router.push(
       router.pathname + `?date=${new Date().toISOString().slice(0, 10)}`,
     );
   };
 
   const DateComponent = () => (
     <span className="w-full items-center text-center font-mono text-base dark:text-white">
-      {date?.toLocaleDateString('en-GB')}
+      {date?.toLocaleDateString("en-GB")}
     </span>
   );
 
@@ -43,8 +42,7 @@ export const DateNavigation = ({ currentDate }: NavigationProps) => {
       <div className="flex items-center justify-between p-2">
         <DateComponent />
       </div>
-      <div
-        className="flex items-center justify-between rounded-l rounded-r bg-gray-200 dark:bg-gray-800 dark:text-gray-200 ">
+      <div className="flex items-center justify-between rounded-l rounded-r bg-gray-200 dark:bg-gray-800 dark:text-gray-200 ">
         <button
           onClick={handlePrevDay}
           className="col-span-1 rounded-l px-4 py-2 font-bold text-gray-800 hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700"
