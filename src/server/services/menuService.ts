@@ -1,5 +1,6 @@
 import axios from "axios";
 import pdf from "pdf-parse";
+import { TRPCError } from "@trpc/server";
 
 const PDF_URL = "https://madklubben.imgix.net";
 
@@ -49,7 +50,11 @@ async function findPdfUrl(date: Date) {
   const pdfUrl = await getPdfUrl(date);
   // 11 december -> 11-12
 
-  if (!pdfUrl) throw new Error("No menu found at Madklubben");
+  if (!pdfUrl)
+    throw new TRPCError({
+      code: "NOT_FOUND",
+      message: "Could not find a menu for the date: " + date.toDateString(),
+    });
   return PDF_URL + pdfUrl;
 }
 
@@ -62,10 +67,12 @@ export const getMenuFromMadklubben = async (date: Date) => {
   });
   if (response.status < 200 || response.status >= 300) {
     console.error("Error:", response.statusText);
-    throw new Error(
-      "Found the menu-url, but could not download the pdf for the date: " +
+    throw new TRPCError({
+      code: "NOT_FOUND",
+      message:
+        "Found the menu-url, but could not download the pdf for the date: " +
         date.toDateString(),
-    );
+    });
   }
 
   try {

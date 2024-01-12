@@ -3,6 +3,13 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { getMenuFromMadklubben } from "~/server/services/menuService";
 import { getMenuByDate, insertMenu } from "~/server/db/menuRepository";
+import { TRPCError } from "@trpc/server";
+
+export const menuNotFoundError = () =>
+  new TRPCError({
+    code: "NOT_FOUND",
+    message: "Menu not found",
+  });
 
 export const menuRouter = createTRPCRouter({
   getItems: publicProcedure
@@ -19,7 +26,10 @@ export const menuRouter = createTRPCRouter({
         insertedMenus.rows.forEach((row) => {
           console.log(row);
         });
-        throw new Error("Menu not found");
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Menu not found",
+        });
       }
 
       const itemsWithCo2 = menus.menuItems.map(async (item) => {

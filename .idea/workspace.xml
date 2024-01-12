@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="one to many works">
+    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="save menus">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/menu/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/api/routers/menu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/api/routers/menu.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/db/menuRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/menuRepository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/services/menuService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/services/menuService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +139,7 @@
       <workItem from="1704308473658" duration="3198000" />
       <workItem from="1704311680803" duration="1404000" />
       <workItem from="1704313099294" duration="9186000" />
-      <workItem from="1705075470817" duration="1832000" />
+      <workItem from="1705075470817" duration="2691000" />
     </task>
     <task id="LOCAL-00001" summary="lint and format">
       <option name="closed" value="true" />
@@ -431,7 +429,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704321598728</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="save menus">
+      <option name="closed" value="true" />
+      <created>1705077312181</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1705077312181</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +455,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add date" />
     <MESSAGE value="move spinner" />
     <MESSAGE value="date navigation" />
     <MESSAGE value="pdf parse" />
@@ -474,6 +479,7 @@
     <MESSAGE value="working" />
     <MESSAGE value="working co2 fetch" />
     <MESSAGE value="one to many works" />
-    <option name="LAST_COMMIT_MESSAGE" value="one to many works" />
+    <MESSAGE value="save menus" />
+    <option name="LAST_COMMIT_MESSAGE" value="save menus" />
   </component>
 </project>

@@ -2,9 +2,14 @@ import { api } from "~/utils/api";
 import { Spinner } from "~/components/spinner";
 
 export function Menu({ date }: { date: Date }) {
-  const { data, error } = api.menu.getItems.useQuery({
-    date: date,
-  });
+  const { data, error } = api.menu.getItems.useQuery(
+    {
+      date: date,
+    },
+    {
+      retry: 2,
+    },
+  );
 
   if (error) {
     // Error state
@@ -15,6 +20,7 @@ export function Menu({ date }: { date: Date }) {
       </div>
     );
   }
+  console.log(data);
 
   if (!data) {
     // Loading state
@@ -37,9 +43,6 @@ export function Menu({ date }: { date: Date }) {
               <th className="bg-gray-800 px-4 py-2 text-sm font-semibold uppercase text-white">
                 Dagens menu
               </th>
-              <th className="bg-gray-800 px-4 py-2 text-sm font-semibold uppercase text-white">
-                Co2
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -49,9 +52,6 @@ export function Menu({ date }: { date: Date }) {
                 className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
               >
                 <td className="border-b px-4 py-2">{dish.description.name}</td>
-                <td className="border-b px-4 py-2">
-                  {dish.co2 ?? "Not found"} {dish.co2 ? "kg" : ""}
-                </td>
               </tr>
             ))}
           </tbody>
