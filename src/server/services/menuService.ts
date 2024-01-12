@@ -36,7 +36,10 @@ const getPdfUrl = async (date: Date) => {
     return item.properties.menucardMedia[0]!.properties.umbracoFile.src;
   });
 
-  if (!url) throw new Error("Could not find a menu for the date: " + date);
+  if (!url)
+    throw new Error(
+      "Could not find a menu for the date: " + date.toDateString(),
+    );
 
   const month_date_str = `${date.getDate()}-${date.getMonth() + 1}`;
   return url.find((item) => item?.includes(month_date_str));

@@ -2,7 +2,6 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { getMenuFromMadklubben } from "~/server/services/menuService";
-import { co2FromMenu } from "~/server/services/co2FromMenu";
 import { getMenuByDate, insertMenu } from "~/server/db/menuRepository";
 
 export const menuRouter = createTRPCRouter({
@@ -23,13 +22,11 @@ export const menuRouter = createTRPCRouter({
         throw new Error("Menu not found");
       }
 
-      throw new Error("Menu not found");
-
       const itemsWithCo2 = menus.menuItems.map(async (item) => {
-        const co2 = await co2FromMenu(item);
+        //const co2 = await co2FromMenu(item);
         return {
           description: item,
-          co2: co2,
+          co2: null,
           menus: menus,
         };
       });

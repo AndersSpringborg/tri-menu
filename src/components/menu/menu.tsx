@@ -48,7 +48,7 @@ export function Menu({ date }: { date: Date }) {
                 key={index}
                 className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
               >
-                <td className="border-b px-4 py-2">{dish.description}</td>
+                <td className="border-b px-4 py-2">{dish.description.name}</td>
                 <td className="border-b px-4 py-2">
                   {dish.co2 ?? "Not found"} {dish.co2 ? "kg" : ""}
                 </td>
