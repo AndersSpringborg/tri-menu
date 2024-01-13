@@ -1,10 +1,7 @@
 import { menuItemTable, menuTable } from "~/server/db/schema";
-import type { PlanetScaleDatabase } from "drizzle-orm/planetscale-serverless";
+import { type Database } from "~/server/db/types";
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-type Database = PlanetScaleDatabase<typeof import("~/server/db/schema")>;
-
-export const getMenuByDate = async (db: Database, date: Date) => {
+export const getMenuByDateFromDatabase = async (db: Database, date: Date) => {
   try {
     return db.query.menuTable.findFirst({
       where: (menus, { eq }) => eq(menus.date, date),

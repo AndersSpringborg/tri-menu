@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="retry policy">
+    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="lint">
+      <change afterPath="$PROJECT_DIR$/src/server/db/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dateNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dateNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/api/routers/menu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/api/routers/menu.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/db/menuRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/menuRepository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/services/menuService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/services/menuService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,29 +47,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/anders/projects/trifork/tri-menu/src/server/api/routers&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/anders/projects/trifork/tri-menu/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/anders/projects/trifork/tri-menu/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/anders/projects/trifork/tri-menu/src/server/api/routers",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/Users/anders/projects/trifork/tri-menu/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "/Users/anders/projects/trifork/tri-menu/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/server/api/routers" />
@@ -81,11 +81,11 @@
       <recent name="$PROJECT_DIR$/tests" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/server/db/types.ts" />
       <recent name="$PROJECT_DIR$/src/server/api/services/co2FromMenu.ts" />
       <recent name="$PROJECT_DIR$/src/components/menu/menu.tsx" />
       <recent name="$PROJECT_DIR$/src/components/page.tsx" />
       <recent name="$PROJECT_DIR$/src/components/dateNavigation.tsx" />
-      <recent name="$PROJECT_DIR$/src/utils/isValidDate.tsx" />
     </key>
   </component>
   <component name="RunManager">
@@ -139,7 +139,7 @@
       <workItem from="1704308473658" duration="3198000" />
       <workItem from="1704311680803" duration="1404000" />
       <workItem from="1704313099294" duration="9186000" />
-      <workItem from="1705075470817" duration="2894000" />
+      <workItem from="1705075470817" duration="6107000" />
     </task>
     <task id="LOCAL-00001" summary="lint and format">
       <option name="closed" value="true" />
@@ -445,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705078208005</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="lint">
+      <option name="closed" value="true" />
+      <created>1705078406339</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1705078406339</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,7 +471,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="date navigation" />
     <MESSAGE value="pdf parse" />
     <MESSAGE value="better parser" />
     <MESSAGE value="idea files" />
@@ -488,6 +495,7 @@
     <MESSAGE value="one to many works" />
     <MESSAGE value="save menus" />
     <MESSAGE value="retry policy" />
-    <option name="LAST_COMMIT_MESSAGE" value="retry policy" />
+    <MESSAGE value="lint" />
+    <option name="LAST_COMMIT_MESSAGE" value="lint" />
   </component>
 </project>
