@@ -2,10 +2,7 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { getMenuFromMadklubben } from "~/server/services/menuService";
-import {
-  getMenuByDateFromDatabase,
-  insertMenu,
-} from "~/server/db/menuRepository";
+import { getMenuByDateFromDatabase } from "~/server/db/menuRepository";
 import { TRPCError } from "@trpc/server";
 import { type Database } from "~/server/db/types";
 
@@ -17,9 +14,9 @@ export const menuNotFoundError = () =>
 
 async function getMenuService(db: Database, date: Date) {
   let menuCached = await getMenuByDateFromDatabase(db, date);
-  if (!menuCached) {
+  if (true || !menuCached) {
     const newMenuItems = await getMenuFromMadklubben(date);
-    await insertMenu(db, date, newMenuItems);
+    //await insertMenu(db, date, newMenuItems);
 
     menuCached = await getMenuByDateFromDatabase(db, date);
     if (!menuCached) {

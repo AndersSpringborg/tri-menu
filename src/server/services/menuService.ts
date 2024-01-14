@@ -2,6 +2,31 @@ import axios from "axios";
 import pdf from "pdf-parse";
 import { TRPCError } from "@trpc/server";
 
+export enum FoodType {
+  Pork = "Pork",
+  Chicken = "Chicken",
+  Vegetarian = "Vegetarian",
+  Vegan = "Vegan",
+  Unknown = "Unknown",
+}
+
+export enum Allergies {
+  Gluten = "Gluten",
+  Lactose = "Lactose",
+  Nuts = "Nuts",
+  Peanuts = "Peanuts",
+  Shellfish = "Shellfish",
+  Fish = "Fish",
+  Egg = "Egg",
+  Soy = "Soy",
+  Sesame = "Sesame",
+  Celery = "Celery",
+  Mustard = "Mustard",
+  Molluscs = "Molluscs",
+  Lupin = "Lupin",
+  Sulfites = "Sulfites",
+}
+
 const PDF_URL = "https://madklubben.imgix.net";
 
 const getPdfUrl = async (date: Date) => {
@@ -58,9 +83,96 @@ async function findPdfUrl(date: Date) {
   return PDF_URL + pdfUrl;
 }
 
+const allergeneMapping = new Map(
+  Object.entries({
+    gluten: Allergies.Gluten,
+    laktose: Allergies.Lactose,
+    nødder: Allergies.Nuts,
+    peanuts: Allergies.Peanuts,
+    skaldyr: Allergies.Shellfish,
+    fisk: Allergies.Fish,
+    æg: Allergies.Egg,
+    soja: Allergies.Soy,
+    sesam: Allergies.Sesame,
+    selleri: Allergies.Celery,
+    sennep: Allergies.Mustard,
+    bløddyr: Allergies.Molluscs,
+    lupin: Allergies.Lupin,
+    sulfitter: Allergies.Sulfites,
+  }),
+);
+
+export function getAllergies(menuLine: string): Allergies[] {
+  const lowerCaseMenuLine = menuLine.toLowerCase();
+  const words = lowerCaseMenuLine.split(" ");
+
+  return words
+    .map((word) => allergeneMapping.get(word))
+    .filter((a) => a) as Allergies[];
+}
+
+const foodTypeMapping = new Map(
+  Object.entries({
+    svinekød: FoodType.Pork,
+    kylling: FoodType.Chicken,
+    vegetarer: FoodType.Vegetarian,
+    vegan: FoodType.Vegan,
+  }),
+);
+
+export function getFoodtype(menuLine: string): FoodType {
+  const lowerCaseMenuLine = menuLine.toLowerCase();
+  const words = lowerCaseMenuLine.split(" ");
+  const foodTypesInLine = words.map((word) => foodTypeMapping.get(word));
+  const foodTypes = foodTypesInLine.filter((a) => a) as FoodType[];
+  if (foodTypes.length === 0) {
+    return FoodType.Unknown;
+  }
+  return foodTypes.pop()!;
+}
+
+function processMenuLine(item: string): {
+  allergies: Allergies[];
+  label: FoodType;
+  items: string;
+} {
+  // remove allergens
+  let lines = item.split("\n");
+  let type = FoodType.Unknown;
+  const allergies: Allergies[] = [];
+  lines = lines.filter((l) => {
+    if (l.includes("Allergener")) {
+      allergies.push(...getAllergies(l));
+      return false;
+    }
+    return true;
+  });
+  // remove pr percon
+  lines = lines.filter((l) => !l.includes("pr. person"));
+  // remove kød
+  lines = lines.filter((l) => {
+    if (l.includes("Kød")) {
+      type = getFoodtype(l);
+      return false;
+    }
+    return true;
+  });
+
+  //concat
+  const line = lines.join(" ");
+
+  // reduce all multiple spaces to single space
+  line.replace(/\s\s+/g, " ");
+
+  return {
+    allergies: allergies,
+    label: type,
+    items: line.trim(),
+  };
+}
+
 export const getMenuFromMadklubben = async (date: Date) => {
   const urlWithDate = await findPdfUrl(date);
-  console.log("urlWithDate", urlWithDate);
   // Download the PDF file
   const response = await axios.get<ArrayBuffer>(urlWithDate, {
     responseType: "arraybuffer",
@@ -86,37 +198,14 @@ export const getMenuFromMadklubben = async (date: Date) => {
     const match = regex.exec(textContent);
 
     if (match?.[1]) {
-      const itemss = match[1]
+      const items = match[1]
         .trim()
         .split("•")
         .map((item) => item.trim());
       // concat things on newlines
-      const items = itemss.map((item) => item.split("\n"));
       // remove allergens
-      const noAllergens = items.map((item) =>
-        item.filter((item) => !item.includes("Allergener")),
-      );
-      const noPerPerson = noAllergens.map((item) =>
-        item.filter((item) => !item.includes("pr. person")),
-      );
-      const noMeat = noPerPerson.map((item) =>
-        item.filter((item) => !item.includes("Kød")),
-      );
-
-      //concat
-      const menuDishes = noMeat.map((item) => item.join(" "));
-
-      // reduce all multiple spaces to single space
-      const menuDishesWithFormattetWhitespace = menuDishes.map((item) =>
-        item.replace(/\s\s+/g, " "),
-      );
-
-      // remove empty strings and trim spaces
-      const trimmedEndSpace = menuDishesWithFormattetWhitespace
-        .filter((item) => item !== "")
-        .map((item) => item.trim());
-
-      return trimmedEndSpace;
+      console.log(items);
+      return items.map(processMenuLine).filter((i) => i.items !== "");
     } else {
       console.log("Pattern not found");
     }
