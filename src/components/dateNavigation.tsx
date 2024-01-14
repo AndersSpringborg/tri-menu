@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
+import { ThemePicker } from "~/components/theme-picker";
 
 interface NavigationProps {
   currentDate: Date;
@@ -39,6 +40,9 @@ export const DateNavigation = ({ currentDate }: NavigationProps) => {
 
   return (
     <nav className="p-4">
+      <div className={"absolute inset-y-0 left-0 flex p-4"}>
+        <ThemePicker />
+      </div>
       <div className="flex items-center justify-between p-2">
         <DateComponent />
       </div>

@@ -46,10 +46,11 @@ export const menuItemTable = mysqlTable(
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
-    updatedAt: timestamp("updatedAt").onUpdateNow(),
+    updatedAt: timestamp("updatedAt")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .onUpdateNow(),
     menu: bigint("menu_id", { mode: "number" }).notNull(),
-
-    name: varchar("name", { length: 256 }),
+    name: varchar("name", { length: 256 }).notNull().default(""),
     co2Estimate: bigint("co2_estimate", { mode: "number" }),
   },
   (example) => ({

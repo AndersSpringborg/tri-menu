@@ -1,13 +1,12 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import { isValidDate } from '~/utils/isValidDate';
-import { DateNavigation } from '~/components/dateNavigation';
-import { Spinner } from '~/components/spinner';
-import { Page } from '~/components/page';
-import { Menu } from '~/components/menu/menu';
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { isValidDate } from "~/utils/isValidDate";
+import { DateNavigation } from "~/components/dateNavigation";
+import { Spinner } from "~/components/spinner";
+import { Page } from "~/components/page";
+import { Menu } from "~/components/menu/menu";
 
 export default function Home() {
-
   const router = useRouter();
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
@@ -21,18 +20,18 @@ export default function Home() {
 
   if (!isValidDate(currentDate)) {
     return (
-      <div>
+      <Page>
         <DateNavigation
           currentDate={currentDate}
           setCurrentDate={setCurrentDate}
         />
         <section>
-          <div className='container mx-auto p-8 text-center'>
-            <h1 className='mb-8 text-4xl font-bold'>Menu</h1>
+          <div className="container mx-auto p-8 text-center">
+            <h1 className="mb-8 text-4xl font-bold">Menu</h1>
             <Spinner />
           </div>
         </section>
-      </div>
+      </Page>
     );
   }
 
@@ -46,5 +45,5 @@ export default function Home() {
         <Menu date={currentDate} />
       </section>
     </Page>
-  );}
-
+  );
+}
