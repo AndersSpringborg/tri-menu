@@ -1,9 +1,5 @@
 import { api } from "~/utils/api";
 import { Spinner } from "~/components/spinner";
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/LFuzifqx8kT
- */
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CloudIcon, ThumbsDownIcon, ThumbsUpIcon } from "~/components/icons";
@@ -66,8 +62,8 @@ export function Menu({ date }: { date: Date }) {
         <CardHeader>
           <h1 className="mb-6 text-center text-2xl font-semibold">
             {date === new Date()
-              ? "Today's Menu"
-              : dateToWeekday(date) + "'s Menu"}
+              ? "Dagens Menu"
+              : dateToWeekdayDanish(date) + "s Menu"}
           </h1>
         </CardHeader>
         <CardContent className="text-sm">
@@ -134,7 +130,7 @@ export function Menu({ date }: { date: Date }) {
   );
 }
 
-const dateToWeekdatDanish = (date: Date) => {
+const dateToWeekdayDanish = (date: Date) => {
   const weekdays = [
     "Søndag",
     "Mandag",
