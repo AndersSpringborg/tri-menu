@@ -9,24 +9,10 @@ import {
 
 export const mysqlTable = mysqlTableCreator((name) => `tri-menu_${name}`);
 
-export const posts = mysqlTable(
-  "post",
-  {
-    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updatedAt").onUpdateNow(),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  }),
-);
-
 export const menuTable = mysqlTable("menu", {
   id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-  date: timestamp("date").notNull(),
+  date: varchar("date_of_menu", { length: 256 }).unique().notNull(),
+  text: varchar("text", { length: 2048 }).notNull(),
   createdAt: timestamp("created_at")
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
@@ -51,6 +37,8 @@ export const menuItemTable = mysqlTable(
       .onUpdateNow(),
     menu: bigint("menu_id", { mode: "number" }).notNull(),
     name: varchar("name", { length: 256 }).notNull().default(""),
+    foodType: varchar("food_type", { length: 256 }).notNull().default(""),
+    allergies: varchar("allergies", { length: 256 }).notNull().default(""),
     co2Estimate: bigint("co2_estimate", { mode: "number" }),
   },
   (example) => ({
@@ -58,7 +46,7 @@ export const menuItemTable = mysqlTable(
   }),
 );
 
-export const menuItemsRelations = relations(menuItemTable, ({ one }) => {
+export const menuItemsRelations = relations(menuItemTable, ({ one, many }) => {
   return {
     menu: one(menuTable, {
       fields: [menuItemTable.menu],

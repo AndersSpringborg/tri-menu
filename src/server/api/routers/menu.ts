@@ -2,7 +2,10 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { getMenuFromMadklubben } from "~/server/services/menuService";
-import { getMenuByDateFromDatabase } from "~/server/db/menuRepository";
+import {
+  getMenuByDateFromDatabase,
+  insertMenu,
+} from "~/server/db/menuRepository";
 import { TRPCError } from "@trpc/server";
 import { type Database } from "~/server/db/types";
 
@@ -14,9 +17,9 @@ export const menuNotFoundError = () =>
 
 async function getMenuService(db: Database, date: Date) {
   let menuCached = await getMenuByDateFromDatabase(db, date);
-  if (true || !menuCached) {
-    const newMenuItems = await getMenuFromMadklubben(date);
-    //await insertMenu(db, date, newMenuItems);
+  if (!menuCached) {
+    const newMenu = await getMenuFromMadklubben(date);
+    await insertMenu(db, date, newMenu);
 
     menuCached = await getMenuByDateFromDatabase(db, date);
     if (!menuCached) {
@@ -25,11 +28,12 @@ async function getMenuService(db: Database, date: Date) {
   }
 
   const itemsWithCo2 = menuCached.menuItems.map(async (item) => {
-    //const co2 = await co2FromMenu(item);
     return {
-      description: item,
-      co2: null,
-      menus: menuCached,
+      id: item.id,
+      item: item.name,
+      label: item.foodType,
+      allergies: item.allergies.split(","),
+      co2Estimate: item.co2Estimate,
     };
   });
 

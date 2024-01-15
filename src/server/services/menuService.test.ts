@@ -1,10 +1,9 @@
 import {
-  Allergies,
-  FoodType,
   getAllergies,
   getFoodtype,
   getMenuFromMadklubben,
 } from "~/server/services/menuService";
+import { Allergies, FoodType } from "~/server/models/enums";
 
 test("parses menu", async () => {
   //'Klassiske boller i karry med æbler \n' +

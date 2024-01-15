@@ -19,7 +19,8 @@ import Link from "next/link";
 
 const average = (arr: number[]): number => {
   if (arr.length === 0) {
-    throw new Error("Cannot calculate average of an empty list");
+    //throw new Error("Cannot calculate average of an empty list");
+    return 0;
   }
 
   const sum = arr.reduce((acc, num) => acc + num, 0);
@@ -84,16 +85,20 @@ export function Menu({ date }: { date: Date }) {
             </TableHeader>
             <TableBody>
               {data.items.map((item, index) => (
-                <TableRow key={item.description.id}>
+                <TableRow key={item.id}>
                   <TableCell className="text-sm font-medium">
-                    {item.description.name}
+                    {item.item}
                   </TableCell>
                   <TableCell className="text-right">
                     <span className={`flex w-14 items-center gap-2 text-xs`}>
-                      <p>{item.co2 ? String(item.co2) + "kg" : "N/A"}</p>
+                      <p>
+                        {item.co2Estimate
+                          ? String(item.co2Estimate) + "kg"
+                          : "N/A"}
+                      </p>
                       <CloudIcon className="h-4 w-4" />
                     </span>
-                    {item.description.co2Estimate}
+                    {item.co2Estimate}
                   </TableCell>
                 </TableRow>
               ))}
@@ -102,9 +107,7 @@ export function Menu({ date }: { date: Date }) {
               <TableRow>
                 <TableCell>Gennemsnitlig Co2 i dag</TableCell>
                 <TableCell className="text-right">
-                  {average(
-                    data.items.map((i) => i.description.co2Estimate ?? 0),
-                  )}
+                  {average(data.items.map((i) => i.co2Estimate ?? 0))}
                 </TableCell>
               </TableRow>
             </TableFooter>
