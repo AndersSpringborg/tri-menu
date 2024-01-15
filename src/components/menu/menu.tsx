@@ -41,27 +41,6 @@ const average = (arr: number[]): number => {
   return sum / arr.length;
 };
 
-const FoodIconSwitch = ({ label }: { label: FoodType }) => {
-  switch (label) {
-    case FoodType.Beef:
-      return {
-        color: "red-500",
-        node: <BeefIcon />,
-      };
-    case FoodType.Vegan:
-      return {
-        color: "green-500",
-        node: <LucideSprout />,
-      };
-
-    default:
-      return {
-        color: "blue-500",
-        node: <LucideSprout />,
-      };
-  }
-};
-
 const FoodIcon = ({ label }: { label: FoodType }) => {
   switch (label) {
     case FoodType.Beef:
@@ -170,7 +149,7 @@ export function Menu({ date }: { date: Date }) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {data.items.map((item, index) => (
+              {data.items.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell className="text-sm font-medium">
                     {item.item}
@@ -242,18 +221,6 @@ const dateToWeekdayDanish = (date: Date) => {
     "Torsdag",
     "Fredag",
     "Lørdag",
-  ];
-  return weekdays[date.getDay()];
-};
-const dateToWeekday = (date: Date) => {
-  const weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
   ];
   return weekdays[date.getDay()];
 };

@@ -46,7 +46,7 @@ export const menuItemTable = mysqlTable(
   }),
 );
 
-export const menuItemsRelations = relations(menuItemTable, ({ one, many }) => {
+export const menuItemsRelations = relations(menuItemTable, ({ one }) => {
   return {
     menu: one(menuTable, {
       fields: [menuItemTable.menu],
