@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="allergies">
-      <change afterPath="$PROJECT_DIR$/src/server/models/enums.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/models/menuLine.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/services/types.ts" afterDir="false" />
+    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="new parser">
+      <change afterPath="$PROJECT_DIR$/src/components/ui/icon-button.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/menu/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/api/routers/menu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/api/routers/menu.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/db/menuRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/menuRepository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/db/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/db/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/services/menuService.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/services/menuService.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/services/menuService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/services/menuService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -211,7 +205,7 @@
       <workItem from="1705265004531" duration="5770000" />
       <workItem from="1705270855161" duration="2772000" />
       <workItem from="1705305324503" duration="2696000" />
-      <workItem from="1705345448992" duration="8057000" />
+      <workItem from="1705345448992" duration="13072000" />
     </task>
     <task id="LOCAL-00001" summary="lint and format">
       <option name="closed" value="true" />
@@ -557,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705272194407</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="new parser">
+      <option name="closed" value="true" />
+      <created>1705354829071</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1705354829071</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +577,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="better error" />
     <MESSAGE value="today button" />
     <MESSAGE value="better logging" />
     <MESSAGE value=".idea" />
@@ -600,6 +601,7 @@
     <MESSAGE value="refactor get menus" />
     <MESSAGE value="new style" />
     <MESSAGE value="allergies" />
-    <option name="LAST_COMMIT_MESSAGE" value="allergies" />
+    <MESSAGE value="new parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="new parser" />
   </component>
 </project>

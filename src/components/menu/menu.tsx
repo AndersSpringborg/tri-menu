@@ -16,6 +16,20 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Link from "next/link";
+import { BeefIcon, IconBadge } from "~/components/ui/icon-button";
+import { Allergies, FoodType } from "~/server/models/enums";
+import {
+  LucideDrumstick,
+  LucideEgg,
+  LucideFish,
+  LucideFishSymbol,
+  LucideMilk,
+  LucideNut,
+  LucidePiggyBank,
+  LucideShell,
+  LucideSprout,
+  LucideWheat,
+} from "lucide-react";
 
 const average = (arr: number[]): number => {
   if (arr.length === 0) {
@@ -25,6 +39,76 @@ const average = (arr: number[]): number => {
 
   const sum = arr.reduce((acc, num) => acc + num, 0);
   return sum / arr.length;
+};
+
+const FoodIconSwitch = ({ label }: { label: FoodType }) => {
+  switch (label) {
+    case FoodType.Beef:
+      return {
+        color: "red-500",
+        node: <BeefIcon />,
+      };
+    case FoodType.Vegan:
+      return {
+        color: "green-500",
+        node: <LucideSprout />,
+      };
+
+    default:
+      return {
+        color: "blue-500",
+        node: <LucideSprout />,
+      };
+  }
+};
+
+const FoodIcon = ({ label }: { label: FoodType }) => {
+  switch (label) {
+    case FoodType.Beef:
+      return <IconBadge color={"red"} icon={<BeefIcon />} />;
+    case FoodType.Vegan:
+      return <IconBadge color={"green"} icon={<LucideSprout />} />;
+    case FoodType.Vegetarian:
+      return <IconBadge color={"green"} icon={<LucideSprout />} />;
+    case FoodType.Fish:
+      return <IconBadge color={"blue"} icon={<LucideFishSymbol />} />;
+    case FoodType.Pork:
+      return <IconBadge color={"pink"} icon={<LucidePiggyBank />} />;
+    case FoodType.Chicken:
+      return <IconBadge color={"yellow"} icon={<LucideDrumstick />} />;
+    case FoodType.Salat:
+    case FoodType.Turkey:
+    default:
+      return null;
+  }
+};
+const AllergyIcon = ({ allergy }: { allergy: Allergies }) => {
+  switch (allergy) {
+    case Allergies.Lactose:
+      return <IconBadge color={"blue"} icon={<LucideMilk />} />;
+    case Allergies.Peanuts:
+    case Allergies.Nuts:
+      return <IconBadge color={"brown"} icon={<LucideNut />} />;
+    case Allergies.Soy:
+    case Allergies.Celery:
+      return <IconBadge color={"black"} icon={<LucideSprout />} />;
+    case Allergies.Egg:
+      return <IconBadge color={"yellow"} icon={<LucideEgg />} />;
+    case Allergies.Fish:
+      return <IconBadge color={"blue"} icon={<LucideFish />} />;
+    case Allergies.Shellfish:
+      return <IconBadge color={"black"} icon={<LucideShell />} />;
+    case Allergies.Mustard:
+    case Allergies.Molluscs:
+    case Allergies.Lupin:
+    case Allergies.Sulfites:
+    case Allergies.Gluten:
+    case Allergies.Sesame:
+      return <IconBadge color={"yellow"} icon={<LucideWheat />} />;
+
+    default:
+      return null;
+  }
 };
 
 export function Menu({ date }: { date: Date }) {
@@ -79,7 +163,9 @@ export function Menu({ date }: { date: Date }) {
             </TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead>Item</TableHead>
+                <TableHead>Ret</TableHead>
+                <TableHead></TableHead>
+                <TableHead>Allergener</TableHead>
                 <TableHead className="w-16 text-right">Co2</TableHead>
               </TableRow>
             </TableHeader>
@@ -88,6 +174,18 @@ export function Menu({ date }: { date: Date }) {
                 <TableRow key={item.id}>
                   <TableCell className="text-sm font-medium">
                     {item.item}
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex gap-2">
+                      <FoodIcon label={item.label} />
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-sm font-medium">
+                    <div className="flex gap-2">
+                      {item.allergies.map((allergy) => (
+                        <AllergyIcon key={allergy} allergy={allergy} />
+                      ))}
+                    </div>
                   </TableCell>
                   <TableCell className="text-right">
                     <span className={`flex w-14 items-center gap-2 text-xs`}>
@@ -106,6 +204,8 @@ export function Menu({ date }: { date: Date }) {
             <TableFooter>
               <TableRow>
                 <TableCell>Gennemsnitlig Co2 i dag</TableCell>
+                <TableCell></TableCell>
+                <TableCell></TableCell>
                 <TableCell className="text-right">
                   {average(data.items.map((i) => i.co2Estimate ?? 0))}
                 </TableCell>

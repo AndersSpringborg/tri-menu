@@ -8,6 +8,7 @@ import {
 } from "~/server/db/menuRepository";
 import { TRPCError } from "@trpc/server";
 import { type Database } from "~/server/db/types";
+import { type Allergies, type FoodType } from "~/server/models/enums";
 
 export const menuNotFoundError = () =>
   new TRPCError({
@@ -31,8 +32,8 @@ async function getMenuService(db: Database, date: Date) {
     return {
       id: item.id,
       item: item.name,
-      label: item.foodType,
-      allergies: item.allergies.split(","),
+      label: item.foodType as FoodType,
+      allergies: item.allergies.split(",") as Allergies[],
       co2Estimate: item.co2Estimate,
     };
   });

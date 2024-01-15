@@ -92,6 +92,7 @@ export function getAllergies(menuLine: string): Allergies[] {
 const foodTypeMapping = new Map(
   Object.entries({
     svinekød: FoodType.Pork,
+    skinke: FoodType.Pork,
     kylling: FoodType.Chicken,
     vegetarer: FoodType.Vegetarian,
     salat: FoodType.Vegetarian,
