@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="retry policy">
+    <list default="true" id="95038ca2-e92d-45c4-95a0-cdb66cd84925" name="Changes" comment="icons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dateNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dateNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/db/menuRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/menuRepository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/services/menuService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/services/menuService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/db/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/db/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,18 +21,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="find-pdf" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/.pnpm/@types+jest@29.5.11/node_modules/@types/jest/index.d.ts" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -48,11 +53,17 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Jest.menuService.test.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.menusService parses labels.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.menusService.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.parse allergens.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.parses menu.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Vitest.All Tests.executor&quot;: &quot;Run&quot;,
+    &quot;Vitest.menusService parses labels.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ratings&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/anders/projects/trifork/tri-menu/src/server/api/routers&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -60,11 +71,12 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/anders/projects/trifork/tri-menu/node_modules/jest&quot;,
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/anders/projects/trifork/tri-menu/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/anders/projects/trifork/tri-menu/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -74,34 +86,85 @@
       <recent name="$PROJECT_DIR$/src/server/api/routers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/server/services/types.ts" />
       <recent name="$PROJECT_DIR$/src/server/services" />
       <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/backend" />
       <recent name="$PROJECT_DIR$/services" />
-      <recent name="$PROJECT_DIR$/tests" />
     </key>
     <key name="es6.move.members.recent.items">
-      <recent name="$PROJECT_DIR$/src/server/api/services/co2FromMenu.ts" />
-      <recent name="$PROJECT_DIR$/src/components/menu/menu.tsx" />
-      <recent name="$PROJECT_DIR$/src/components/page.tsx" />
-      <recent name="$PROJECT_DIR$/src/components/dateNavigation.tsx" />
-      <recent name="$PROJECT_DIR$/src/utils/isValidDate.tsx" />
+      <recent name="$PROJECT_DIR$/src/server/models/enums.ts" />
+      <recent name="$PROJECT_DIR$/src/server/models/menuLine.ts" />
+      <recent name="$PROJECT_DIR$/src/server/services/types.ts" />
+      <recent name="$PROJECT_DIR$/src/server/db/types.ts" />
+      <recent name="$PROJECT_DIR$/src/components/container.tsx" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
+  <component name="RunManager" selected="Jest.menuService.test.ts">
+    <configuration name="menuService.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
       <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/server/services/menuService.test.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="menusService parses labels" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/server/services/menuService.test.ts" />
+      <test-names>
+        <test-name value="menusService parses labels" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="menusService" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/server/services/menuService.test.ts" />
+      <test-names>
+        <test-name value="menusService" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="parse allergens" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/server/services/menuService.test.ts" />
+      <test-names>
+        <test-name value="parse allergens" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="parses menu" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/server/services/menuService.test.ts" />
+      <test-names>
+        <test-name value="parses menu" />
+      </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
+        <item itemvalue="Jest.menuService.test.ts" />
+        <item itemvalue="Jest.parses menu" />
+        <item itemvalue="Jest.parse allergens" />
+        <item itemvalue="Jest.menusService" />
+        <item itemvalue="Jest.menusService parses labels" />
       </list>
     </recent_temporary>
   </component>
@@ -139,7 +202,11 @@
       <workItem from="1704308473658" duration="3198000" />
       <workItem from="1704311680803" duration="1404000" />
       <workItem from="1704313099294" duration="9186000" />
-      <workItem from="1705075470817" duration="2894000" />
+      <workItem from="1705075470817" duration="12096000" />
+      <workItem from="1705265004531" duration="5770000" />
+      <workItem from="1705270855161" duration="2772000" />
+      <workItem from="1705305324503" duration="2696000" />
+      <workItem from="1705345448992" duration="13824000" />
     </task>
     <task id="LOCAL-00001" summary="lint and format">
       <option name="closed" value="true" />
@@ -445,7 +512,63 @@
       <option name="project" value="LOCAL" />
       <updated>1705078208005</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="lint">
+      <option name="closed" value="true" />
+      <created>1705078406339</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1705078406339</updated>
+    </task>
+    <task id="LOCAL-00040" summary="refactor get menus">
+      <option name="closed" value="true" />
+      <created>1705164872732</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1705164872732</updated>
+    </task>
+    <task id="LOCAL-00041" summary="new style">
+      <option name="closed" value="true" />
+      <created>1705266938398</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1705266938398</updated>
+    </task>
+    <task id="LOCAL-00042" summary="new style">
+      <option name="closed" value="true" />
+      <created>1705267145515</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1705267145515</updated>
+    </task>
+    <task id="LOCAL-00043" summary="allergies">
+      <option name="closed" value="true" />
+      <created>1705272194407</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1705272194407</updated>
+    </task>
+    <task id="LOCAL-00044" summary="new parser">
+      <option name="closed" value="true" />
+      <created>1705354829071</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1705354829071</updated>
+    </task>
+    <task id="LOCAL-00045" summary="icons">
+      <option name="closed" value="true" />
+      <created>1705359850926</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1705359850926</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,12 +586,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="date navigation" />
-    <MESSAGE value="pdf parse" />
-    <MESSAGE value="better parser" />
-    <MESSAGE value="idea files" />
-    <MESSAGE value="better error" />
-    <MESSAGE value="today button" />
     <MESSAGE value="better logging" />
     <MESSAGE value=".idea" />
     <MESSAGE value="format" />
@@ -488,6 +605,12 @@
     <MESSAGE value="one to many works" />
     <MESSAGE value="save menus" />
     <MESSAGE value="retry policy" />
-    <option name="LAST_COMMIT_MESSAGE" value="retry policy" />
+    <MESSAGE value="lint" />
+    <MESSAGE value="refactor get menus" />
+    <MESSAGE value="new style" />
+    <MESSAGE value="allergies" />
+    <MESSAGE value="new parser" />
+    <MESSAGE value="icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="icons" />
   </component>
 </project>

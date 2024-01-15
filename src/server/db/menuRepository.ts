@@ -1,38 +1,45 @@
 import { menuItemTable, menuTable } from "~/server/db/schema";
-import type { PlanetScaleDatabase } from "drizzle-orm/planetscale-serverless";
+import { type Database } from "~/server/db/types";
+import { type Menu } from "~/server/models/menuLine";
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-type Database = PlanetScaleDatabase<typeof import("~/server/db/schema")>;
+const formatDateToDayString = (date: Date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
 
-export const getMenuByDate = async (db: Database, date: Date) => {
+  return `${year}-${month}-${day}`;
+};
+
+export const getMenuByDateFromDatabase = async (db: Database, date: Date) => {
   try {
-    return db.query.menuTable.findFirst({
-      where: (menus, { eq }) => eq(menus.date, date),
+    return await db.query.menuTable.findFirst({
+      where: (menus, { eq }) => eq(menus.date, formatDateToDayString(date)),
       with: {
         menuItems: true,
       },
     });
   } catch (err) {
-    console.log(err);
     return null;
   }
 };
 
-export const insertMenu = async (
-  db: Database,
-  date: Date,
-  menuItemsParsed: string[],
-) => {
-  const newMenu = await db.insert(menuTable).values({
-    date: date,
+export const insertMenu = async (db: Database, date: Date, menu: Menu) => {
+  await db.transaction(async (trx) => {
+    console.log("text length", menu.textContent.length);
+    const newMenu = await trx.insert(menuTable).values({
+      text: menu.textContent,
+      date: formatDateToDayString(date),
+    });
+
+    const menuId = parseInt(newMenu.insertId);
+
+    for (const item of menu.menuItems) {
+      await trx.insert(menuItemTable).values({
+        menu: menuId,
+        name: item.item,
+        foodType: item.label,
+        allergies: item.allergies.join(","),
+      });
+    }
   });
-
-  const menuId = parseInt(newMenu.insertId);
-
-  return db.insert(menuItemTable).values(
-    menuItemsParsed.map((item) => ({
-      menu: menuId,
-      name: item,
-    })),
-  );
 };
