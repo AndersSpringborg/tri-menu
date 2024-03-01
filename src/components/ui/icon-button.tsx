@@ -1,4 +1,4 @@
-import { Button, type buttonVariants } from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 import { cn } from "~/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
