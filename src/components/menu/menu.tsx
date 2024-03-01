@@ -334,6 +334,21 @@ function Rating({ menuId }: { menuId: number }) {
           Dislike
         </Button>
       </div>
+      <RatingStats menuId={menuId} />
     </div>
   );
 }
+
+const RatingStats = ({ menuId }: { menuId: number }) => {
+  const likes = 22;
+  const dislikes = 3;
+
+  return (
+    <div>
+      <h4>{"This menu got a rating of: "}</h4>
+      <Progress className="w-96" value={(likes / (likes + dislikes)) * 100} />
+      <p>{likes + " likes"}</p>
+      <p>{dislikes + " dislikes"}</p>
+    </div>
+  );
+};
