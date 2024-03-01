@@ -16,20 +16,20 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Link from "next/link";
-import { BeefIcon, IconBadge } from "~/components/ui/icon-button";
+import { IconBadge, IconBorderBadge } from "~/components/ui/icon-button";
 import { Allergies, FoodType } from "~/server/models/enums";
 import {
-  LucideDrumstick,
   LucideEgg,
   LucideFish,
-  LucideFishSymbol,
   LucideMilk,
   LucideNut,
-  LucidePiggyBank,
   LucideShell,
   LucideSprout,
   LucideWheat,
 } from "lucide-react";
+import { toast } from "sonner";
+import { useState } from "react";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const average = (arr: number[]): number => {
   if (arr.length === 0) {
@@ -44,19 +44,21 @@ const average = (arr: number[]): number => {
 const FoodIcon = ({ label }: { label: FoodType }) => {
   switch (label) {
     case FoodType.Beef:
-      return <IconBadge color={"red"} icon={<BeefIcon />} />;
+      return <IconBorderBadge color={"red"} icon={<span>🥩</span>} />;
     case FoodType.Vegan:
-      return <IconBadge color={"green"} icon={<LucideSprout />} />;
+      return <IconBorderBadge color={"green"} icon={<span>🌱</span>} />;
     case FoodType.Vegetarian:
-      return <IconBadge color={"green"} icon={<LucideSprout />} />;
+      return <IconBorderBadge icon={<span>🥕</span>} />;
     case FoodType.Fish:
-      return <IconBadge color={"blue"} icon={<LucideFishSymbol />} />;
+      return <IconBorderBadge color={"blue"} icon={<span>🐟</span>} />;
     case FoodType.Pork:
-      return <IconBadge color={"pink"} icon={<LucidePiggyBank />} />;
+      return <IconBorderBadge color={"pink"} icon={<span>🐷</span>} />;
     case FoodType.Chicken:
-      return <IconBadge color={"yellow"} icon={<LucideDrumstick />} />;
+      return <IconBorderBadge color={"yellow"} icon={<span>🐔</span>} />;
     case FoodType.Salat:
+      return <IconBorderBadge color={"green"} icon={<span>🥗</span>} />;
     case FoodType.Turkey:
+      return <IconBorderBadge color={"brown"} icon={<span>🦃</span>} />;
     default:
       return null;
   }
@@ -197,7 +199,7 @@ export function Menu({ date }: { date: Date }) {
       {date == new Date() || true ? (
         <div className="flex flex-col items-center space-y-1.5 p-6">
           <h4 className="text-l font-medium">{"Did you like today's menu?"}</h4>
-          <Rating />
+          <Rating menuId={data.menu.id} />
         </div>
       ) : (
         <div className="flex flex-col items-center space-y-1.5 p-6 text-center">
@@ -225,16 +227,110 @@ const dateToWeekdayDanish = (date: Date) => {
   return weekdays[date.getDay()];
 };
 
-function Rating() {
+function Rating({ menuId }: { menuId: number }) {
+  const [likeLoading, setLikeLoading] = useState(false);
+  const [dislikeLoading, setDislikeLoading] = useState(false);
+
+  const undoAddLike = api.like.addLike.useMutation({});
+  const optimisticAddLike = api.like.addLike.useMutation({
+    onError: (error) => {
+      toast.error("Something went wrong", {
+        description: error.message,
+      });
+    },
+    onSuccess: () => {
+      toast.success("Like saved", {
+        description: new Date().toDateString(),
+        action: {
+          label: "Undo",
+          onClick: () => {
+            undoAddLike.mutate({
+              menuId,
+              like: false,
+            });
+          },
+        },
+      });
+    },
+    onSettled: () => {
+      setLikeLoading(false);
+    },
+  });
+  const undoAddDislike = api.like.addDislike.useMutation({});
+  const optimisticAddDislike = api.like.addDislike.useMutation({
+    onError: (error) => {
+      toast.error("Something went wrong", {
+        description: error.message,
+      });
+    },
+    onSuccess: () => {
+      toast.success("Dislike saved", {
+        description: new Date().toDateString(),
+        action: {
+          label: "Undo",
+          onClick: () => {
+            undoAddDislike.mutate({
+              menuId,
+              dislike: false,
+            });
+          },
+        },
+      });
+    },
+    onSettled: () => {
+      setDislikeLoading(false);
+    },
+  });
+
+  const handleLike = async () => {
+    setLikeLoading(true);
+    void optimisticAddLike
+      .mutateAsync({
+        menuId,
+        like: true,
+      })
+      .then(() => {
+        setLikeLoading(false);
+      });
+  };
+
+  const handleDislike = async () => {
+    setDislikeLoading(true);
+    void optimisticAddDislike
+      .mutateAsync({
+        menuId,
+        dislike: true,
+      })
+      .then(() => {
+        setDislikeLoading(false);
+      });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex justify-center gap-4">
-        <Button className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600 dark:bg-green-700">
-          <ThumbsUpIcon className="mr-2 h-4 w-4" />
+        <Button
+          disabled={likeLoading || dislikeLoading}
+          className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600 dark:bg-green-700"
+          onClick={handleLike}
+        >
+          {likeLoading ? (
+            <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <ThumbsUpIcon className="mr-2 h-4 w-4" />
+          )}
           Like
         </Button>
-        <Button className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600 dark:bg-red-700">
-          <ThumbsDownIcon className="mr-2 h-4 w-4" />
+        <Button
+          disabled={likeLoading || dislikeLoading}
+          className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600 dark:bg-red-700"
+          onClick={handleDislike}
+        >
+          {dislikeLoading ? (
+            <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <ThumbsDownIcon className="mr-2 h-4 w-4" />
+          )}
           Dislike
         </Button>
       </div>

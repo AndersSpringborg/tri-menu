@@ -5,6 +5,7 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import { ThemeProvider } from "~/components/theme-provider";
+import { Toaster } from "~/components/ui/sonner";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const poppins = Poppins({
@@ -23,6 +24,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       disableTransitionOnChange
     >
       <Component {...pageProps} />
+      <Toaster />
     </ThemeProvider>
   );
 };

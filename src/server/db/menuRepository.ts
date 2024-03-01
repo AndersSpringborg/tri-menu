@@ -1,6 +1,7 @@
 import { menuItemTable, menuTable } from "~/server/db/schema";
 import { type Database } from "~/server/db/types";
 import { type Menu } from "~/server/models/menuLine";
+import { eq } from "drizzle-orm";
 
 const formatDateToDayString = (date: Date) => {
   const day = date.getDate();
@@ -43,3 +44,45 @@ export const insertMenu = async (db: Database, date: Date, menu: Menu) => {
     }
   });
 };
+
+export async function updateLikesMenu(
+  db: Database,
+  menuId: number,
+  like: boolean,
+) {
+  // get the menu from the database
+  const menu = await db.query.menuTable.findFirst({
+    where: eq(menuTable.id, menuId),
+  });
+
+  if (!menu) {
+    throw new Error("Menu not found");
+  }
+  // update the menu with the new rating
+  await db
+    .update(menuTable)
+    .set({ likes: like ? menu.likes + 1 : menu.likes - 1 })
+    .where(eq(menuTable.id, menu.id));
+  return;
+}
+
+export async function updateDislikesMenu(
+  db: Database,
+  menuId: number,
+  dislike: boolean,
+) {
+  // get the menu from the database
+  const menu = await db.query.menuTable.findFirst({
+    where: eq(menuTable.id, menuId),
+  });
+
+  if (!menu) {
+    throw new Error("Menu not found");
+  }
+  // update the menu with the new rating
+  await db
+    .update(menuTable)
+    .set({ dislikes: dislike ? menu.dislikes + 1 : menu.dislikes - 1 })
+    .where(eq(menuTable.id, menu.id));
+  return;
+}

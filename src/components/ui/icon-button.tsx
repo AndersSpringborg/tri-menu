@@ -1,27 +1,78 @@
-import { Button } from "~/components/ui/button";
+import { Button, type buttonVariants } from "~/components/ui/button";
 import { cn } from "~/utils";
+import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
-export const IconBadge = ({
-  color,
-  icon,
-}: {
-  color: "red" | "green" | "blue" | "pink" | "yellow" | "brown" | "black";
+const colors = {
+  default: `[#d3d3d3]`,
+  red: `[#e74c3c]`,
+  green: `[#2ecc71]`,
+  blue: `[#2e8fcc]`,
+  pink: `[#d754ba]`,
+  yellow: `[#f0c14b]`,
+  brown: `[#a0522d]`,
+  black: `[#000000]`,
+  white: `[#ffffff]`,
+};
+
+const iconVariants = cva("h-6 w-6 p-1 text-white", {
+  variants: {
+    color: {
+      default: `bg-${colors.default}`,
+      red: `bg-${colors.red}`,
+      green: `bg-${colors.green}`,
+      blue: `bg-${colors.blue}`,
+      pink: `bg-${colors.pink}`,
+      yellow: `bg-${colors.yellow}`,
+      brown: `bg-${colors.brown}`,
+      black: `bg-${colors.black}`,
+      white: `bg-${colors.white}`,
+    },
+  },
+  defaultVariants: {
+    color: "default",
+  },
+});
+
+interface IconBadgeProps extends VariantProps<typeof iconVariants> {
+  className?: string;
   icon: React.ReactNode;
-}) => {
-  const colors = {
-    red: `bg-[#dc2d10]`,
-    green: `bg-[#2ECC71]`,
-    blue: `bg-[#2e8fcc]`,
-    pink: `bg-[#d754ba]`,
-    yellow: `bg-[#f0c14b]`,
-    brown: `bg-[#a0522d]`,
-    black: `bg-[#000000]`,
-  };
-
+}
+export const IconBadge = ({ color, icon, className }: IconBadgeProps) => {
   return (
     <Button
-      className={cn("h-6 w-6 p-1 text-white", colors[color])}
-      variant="secondary"
+      className={cn(iconVariants({ color }), className)}
+      variant={"secondary"}
+    >
+      {icon}
+    </Button>
+  );
+};
+
+const iconBorderVariants = cva("h-6 w-6 p-1 text-white", {
+  variants: {
+    color: {
+      default: `border-${colors.default}`,
+      red: `border-${colors.red}`,
+      green: `border-${colors.green}`,
+      blue: `border-${colors.blue}`,
+      pink: `border-${colors.pink}`,
+      yellow: `border-${colors.yellow}`,
+      brown: `border-${colors.brown}`,
+      black: `border-${colors.black}`,
+      white: `border-${colors.white}`,
+    },
+  },
+  defaultVariants: {
+    color: "default",
+  },
+});
+
+export const IconBorderBadge = ({ color, icon, className }: IconBadgeProps) => {
+  return (
+    <Button
+      className={cn(iconBorderVariants({ color }), className)}
+      variant={"outline"}
     >
       {icon}
     </Button>

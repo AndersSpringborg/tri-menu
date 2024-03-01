@@ -13,6 +13,8 @@ export const menuTable = mysqlTable("menu", {
   id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
   date: varchar("date_of_menu", { length: 256 }).unique().notNull(),
   text: varchar("text", { length: 2048 }).notNull(),
+  likes: bigint("rating", { mode: "number" }).default(0).notNull(),
+  dislikes: bigint("dislikes", { mode: "number" }).default(0).notNull(),
   createdAt: timestamp("created_at")
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
@@ -36,6 +38,8 @@ export const menuItemTable = mysqlTable(
       .default(sql`CURRENT_TIMESTAMP`)
       .onUpdateNow(),
     menu: bigint("menu_id", { mode: "number" }).notNull(),
+    likes: bigint("likes", { mode: "number" }).default(0).notNull(),
+    dislikes: bigint("dislikes", { mode: "number" }).default(0).notNull(),
     name: varchar("name", { length: 256 }).notNull().default(""),
     foodType: varchar("food_type", { length: 256 }).notNull().default(""),
     allergies: varchar("allergies", { length: 256 }).notNull().default(""),

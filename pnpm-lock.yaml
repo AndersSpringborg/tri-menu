@@ -71,6 +71,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  sonner:
+    specifier: ^1.4.3
+    version: 1.4.3(react-dom@18.2.0)(react@18.2.0)
   superjson:
     specifier: ^2.2.1
     version: 2.2.1
@@ -80,6 +83,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.0)
+  translate:
+    specifier: ^2.0.2
+    version: 2.0.2
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -116,8 +122,8 @@ devDependencies:
     specifier: ^10.4.14
     version: 10.4.16(postcss@8.4.32)
   drizzle-kit:
-    specifier: ^0.20.9
-    version: 0.20.9
+    specifier: ^0.20.13
+    version: 0.20.13
   eslint:
     specifier: ^8.54.0
     version: 8.56.0
@@ -128,7 +134,7 @@ devDependencies:
     specifier: ^29.7.0
     version: 29.7.0(@types/node@18.19.4)
   mysql2:
-    specifier: ^3.6.1
+    specifier: ^3.6.5
     version: 3.6.5
   postcss:
     specifier: ^8.4.31
@@ -481,8 +487,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@drizzle-team/studio@0.0.37:
-    resolution: {integrity: sha512-LZyAPGJBX43jsrVZh7+w1Jig/BC6PJx63ReHUYK+GRQYNY9UJNlPXmn1uC/LMRX+A7JwYM4Sr4Fg/hnJSqlfgA==}
+  /@drizzle-team/studio@0.0.39:
+    resolution: {integrity: sha512-c5Hkm7MmQC2n5qAsKShjQrHoqlfGslB8+qWzsGGZ+2dHMRTNG60UuzalF0h0rvBax5uzPXuGkYLGaQ+TUX3yMw==}
     dependencies:
       superjson: 2.2.1
     dev: true
@@ -2986,11 +2992,11 @@ packages:
       wordwrap: 1.0.0
     dev: true
 
-  /drizzle-kit@0.20.9:
-    resolution: {integrity: sha512-5oIbPFdfEEfzVSOB3MWGt70VSHv6W7qMAWCJ5xc6W1BxgGASipxuAuyXD59fx9S6QYTNNnuSuQFoIdnNTRWY2A==}
+  /drizzle-kit@0.20.13:
+    resolution: {integrity: sha512-j9oZSQXNWG+KBJm0Sg3S/zJpncHGKnpqNfFuM4NUxUMGTcihDHhP9SW6Jncqwb5vsP1Xm0a8JLm3PZUIspC/oA==}
     hasBin: true
     dependencies:
-      '@drizzle-team/studio': 0.0.37
+      '@drizzle-team/studio': 0.0.39
       '@esbuild-kit/esm-loader': 2.6.5
       camelcase: 7.0.1
       chalk: 5.3.0
@@ -5819,6 +5825,16 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /sonner@1.4.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-SArYlHbkjqRuLiR0iGY2ZSr09oOrxw081ZZkQPfXrs8aZQLIBOLOdzTYxGJB5yIZ7qL56UEPmrX1YqbODwG0Lw==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -6111,6 +6127,10 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
+
+  /translate@2.0.2:
+    resolution: {integrity: sha512-K07zjM146c2RYbdlG0xCNGkE6WPdcWjdWX55SOpHzgIq9Elj+LvvXDAfbeQ8gSfkrluaGahnNv2pYfq82UiBDQ==}
+    dev: false
 
   /ts-api-utils@1.0.3(typescript@5.3.3):
     resolution: {integrity: sha512-wNMeqtMz5NtwpT/UZGY5alT+VoKdSsOOP/kqHFcUW1P/VRhH2wJ48+DN2WwUliNbQ976ETwDL0Ifd2VVvgonvg==}
