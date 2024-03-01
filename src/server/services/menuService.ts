@@ -116,7 +116,6 @@ export function getFoodtype(menuLine: string): FoodType {
 function processMenuLine(item: string): MenuLine {
   // remove allergens
   let lines = item.split("\n");
-  console.log("lines", lines);
   let type: FoodType = FoodType.Unknown;
   const allergies: Allergies[] = new Array<Allergies>();
   lines = lines.filter((l) => {
