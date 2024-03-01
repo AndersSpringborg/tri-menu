@@ -6,6 +6,7 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import { ThemeProvider } from "~/components/theme-provider";
 import { Toaster } from "~/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const poppins = Poppins({
@@ -25,6 +26,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     >
       <Component {...pageProps} />
       <Toaster />
+      <Analytics />
     </ThemeProvider>
   );
 };
