@@ -2,6 +2,12 @@ import { Button } from "~/components/ui/button";
 import { cn } from "~/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
 
 const colors = {
   default: `[#d3d3d3]`,
@@ -36,20 +42,40 @@ const iconVariants = cva("h-6 w-6 p-1 text-white", {
 
 interface IconBadgeProps extends VariantProps<typeof iconVariants> {
   className?: string;
+  description?: string;
   icon: React.ReactNode;
 }
-export const IconBadge = ({ color, icon, className }: IconBadgeProps) => {
+export const IconBadge = ({
+  color,
+  icon,
+  className,
+  description,
+}: IconBadgeProps) => {
+  // show description on hover
   return (
-    <Button
-      className={cn(iconVariants({ color }), className)}
-      variant={"secondary"}
-    >
-      {icon}
-    </Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            className={cn(iconBorderVariants({ color }), className)}
+            size="icon"
+            variant="ghost"
+          >
+            {icon}
+            <span className="sr-only">{description}</span>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <span className="rounded-md bg-black bg-opacity-80 p-1 text-white dark:text-black">
+            {description}
+          </span>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 
-const iconBorderVariants = cva("h-6 w-6 p-1 text-white", {
+const iconBorderVariants = cva("rounded-full border border-dashed p-1", {
   variants: {
     color: {
       default: `border-${colors.default}`,

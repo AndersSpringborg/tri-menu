@@ -86,3 +86,18 @@ export async function updateDislikesMenu(
     .where(eq(menuTable.id, menu.id));
   return;
 }
+
+export async function getLikesMenu(db: Database, menuId: number) {
+  const menu = await db.query.menuTable.findFirst({
+    where: eq(menuTable.id, menuId),
+  });
+
+  if (!menu) {
+    throw new Error("Menu not found");
+  }
+
+  return {
+    likes: menu.likes,
+    dislikes: menu.dislikes,
+  };
+}

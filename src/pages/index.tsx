@@ -26,7 +26,7 @@ export default function Home() {
           setCurrentDate={setCurrentDate}
         />
         <section>
-          <div className="container mx-auto p-8 text-center">
+          <div className="container mx-auto text-center">
             <h1 className="mb-8 text-4xl font-bold">Menu</h1>
             <Spinner />
           </div>

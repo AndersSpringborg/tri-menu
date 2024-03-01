@@ -30,6 +30,7 @@ import {
 import { toast } from "sonner";
 import { useState } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { Skeleton } from "~/components/ui/skeleton";
 
 const average = (arr: number[]): number => {
   if (arr.length === 0) {
@@ -69,10 +70,22 @@ const AllergyIcon = ({ allergy }: { allergy: Allergies }) => {
       return <IconBadge color={"blue"} icon={<LucideMilk />} />;
     case Allergies.Peanuts:
     case Allergies.Nuts:
-      return <IconBadge color={"brown"} icon={<LucideNut />} />;
+      return (
+        <IconBadge
+          color={"brown"}
+          icon={<LucideNut />}
+          description={"Contains Nuts"}
+        />
+      );
     case Allergies.Soy:
     case Allergies.Celery:
-      return <IconBadge color={"black"} icon={<LucideSprout />} />;
+      return (
+        <IconBadge
+          color={"black"}
+          icon={<LucideSprout />}
+          description={"Contains Celery"}
+        />
+      );
     case Allergies.Egg:
       return <IconBadge color={"yellow"} icon={<LucideEgg />} />;
     case Allergies.Fish:
@@ -85,7 +98,13 @@ const AllergyIcon = ({ allergy }: { allergy: Allergies }) => {
     case Allergies.Sulfites:
     case Allergies.Gluten:
     case Allergies.Sesame:
-      return <IconBadge color={"yellow"} icon={<LucideWheat />} />;
+      return (
+        <IconBadge
+          color={"yellow"}
+          icon={<LucideWheat />}
+          description={`Contains ${allergy}`}
+        />
+      );
 
     default:
       return null;
@@ -123,7 +142,7 @@ export function Menu({ date }: { date: Date }) {
   }
 
   return (
-    <Container>
+    <>
       <Card className="p-6">
         <CardHeader>
           <h1 className="mb-6 text-center text-2xl font-semibold">
@@ -173,7 +192,7 @@ export function Menu({ date }: { date: Date }) {
                       <p>
                         {item.co2Estimate
                           ? String(item.co2Estimate) + "kg"
-                          : "N/A"}
+                          : ""}
                       </p>
                       <CloudIcon className="h-4 w-4" />
                     </span>
@@ -210,7 +229,7 @@ export function Menu({ date }: { date: Date }) {
           </h4>
         </div>
       )}
-    </Container>
+    </>
   );
 }
 
@@ -230,6 +249,7 @@ const dateToWeekdayDanish = (date: Date) => {
 function Rating({ menuId }: { menuId: number }) {
   const [likeLoading, setLikeLoading] = useState(false);
   const [dislikeLoading, setDislikeLoading] = useState(false);
+  const utils = api.useUtils();
 
   const undoAddLike = api.like.addLike.useMutation({});
   const optimisticAddLike = api.like.addLike.useMutation({
@@ -254,6 +274,7 @@ function Rating({ menuId }: { menuId: number }) {
     },
     onSettled: () => {
       setLikeLoading(false);
+      utils.like.getLikes.invalidate({ menuId });
     },
   });
   const undoAddDislike = api.like.addDislike.useMutation({});
@@ -263,7 +284,7 @@ function Rating({ menuId }: { menuId: number }) {
         description: error.message,
       });
     },
-    onSuccess: () => {
+    onSuccess: (res) => {
       toast.success("Dislike saved", {
         description: new Date().toDateString(),
         action: {
@@ -278,6 +299,7 @@ function Rating({ menuId }: { menuId: number }) {
       });
     },
     onSettled: () => {
+      utils.like.getLikes.refetch({ menuId });
       setDislikeLoading(false);
     },
   });
@@ -307,7 +329,7 @@ function Rating({ menuId }: { menuId: number }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center gap-4">
       <div className="flex justify-center gap-4">
         <Button
           disabled={likeLoading || dislikeLoading}
@@ -340,15 +362,28 @@ function Rating({ menuId }: { menuId: number }) {
 }
 
 const RatingStats = ({ menuId }: { menuId: number }) => {
-  const likes = 22;
-  const dislikes = 3;
+  const { data, error } = api.like.getLikes.useQuery({
+    menuId,
+  });
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!data) {
+    return <Skeleton className={"h-2 w-96"} />;
+  }
+
+  const { likes, dislikes } = data;
+  const noVotes = likes + dislikes === 0;
 
   return (
     <div>
-      <h4>{"This menu got a rating of: "}</h4>
-      <Progress className="w-96" value={(likes / (likes + dislikes)) * 100} />
-      <p>{likes + " likes"}</p>
-      <p>{dislikes + " dislikes"}</p>
+      <Progress
+        className="w-96 bg-red-500"
+        indicatorClassName={"bg-green-500"}
+        value={noVotes ? 50 : (likes / (likes + dislikes)) * 100}
+      />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { z } from "zod";
 import {
+  getLikesMenu,
   updateDislikesMenu,
   updateLikesMenu,
 } from "~/server/db/menuRepository";
@@ -26,5 +27,10 @@ export const likeRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       await updateDislikesMenu(ctx.db, input.menuId, input.dislike);
+    }),
+  getLikes: publicProcedure
+    .input(z.object({ menuId: z.number() }))
+    .query(async ({ ctx, input }) => {
+      return await getLikesMenu(ctx.db, input.menuId);
     }),
 });

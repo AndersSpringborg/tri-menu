@@ -33,13 +33,13 @@ export const DateNavigation = ({ currentDate }: NavigationProps) => {
   };
 
   const DateComponent = () => (
-    <span className="w-full items-center text-center font-mono text-base dark:text-white">
+    <span className="font-mono w-full items-center text-center text-base dark:text-white">
       {date?.toLocaleDateString("en-GB")}
     </span>
   );
 
   return (
-    <nav className="p-4">
+    <nav className="py-4">
       <div className={"absolute inset-y-0 left-0 flex p-4"}>
         <ThemePicker />
       </div>
