@@ -3,7 +3,6 @@ import { Spinner } from "~/components/spinner";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CloudIcon, ThumbsDownIcon, ThumbsUpIcon } from "~/components/icons";
-import { Container } from "~/components/container";
 import { Progress } from "~/components/ui/progress";
 import {
   Table,
@@ -272,9 +271,9 @@ function Rating({ menuId }: { menuId: number }) {
         },
       });
     },
-    onSettled: () => {
+    onSettled: async () => {
       setLikeLoading(false);
-      utils.like.getLikes.invalidate({ menuId });
+      await utils.like.getLikes.invalidate({ menuId });
     },
   });
   const undoAddDislike = api.like.addDislike.useMutation({});
@@ -298,8 +297,8 @@ function Rating({ menuId }: { menuId: number }) {
         },
       });
     },
-    onSettled: () => {
-      utils.like.getLikes.refetch({ menuId });
+    onSettled: async () => {
+      await utils.like.getLikes.refetch({ menuId });
       setDislikeLoading(false);
     },
   });

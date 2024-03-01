@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a08a102-79a5-4153-83b6-e4e8c60b5545" name="Changes" comment="ratings">
+    <list default="true" id="2a08a102-79a5-4153-83b6-e4e8c60b5545" name="Changes" comment="eslint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dateNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dateNavigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/menu/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/icon-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/icon-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/command.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/input.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ui/progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/progress.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/api/routers/post.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/api/routers/review.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/api/routers/review.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/db/menuRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/db/menuRepository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/textarea.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/toggle-group.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
     "npm.start.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/Users/anders/projects/trifork/tri-menu/node_modules/prettier",
     "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "actions.on.save",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
     "ts.external.directory.path": "/Users/anders/projects/trifork/tri-menu/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -140,7 +138,7 @@
       <workItem from="1708705052868" duration="48000" />
       <workItem from="1708705106518" duration="718000" />
       <workItem from="1708708939074" duration="3189000" />
-      <workItem from="1709303669722" duration="12521000" />
+      <workItem from="1709303669722" duration="12986000" />
     </task>
     <task id="LOCAL-00002" summary="ratings">
       <option name="closed" value="true" />
@@ -190,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709324955206</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ratings">
+      <option name="closed" value="true" />
+      <created>1709327394266</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1709327394266</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,12 +214,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="lint and font" />
     <MESSAGE value="font" />
     <MESSAGE value="new-york style" />
     <MESSAGE value="remove log" />
     <MESSAGE value="shadcn" />
     <MESSAGE value="ratings" />
-    <option name="LAST_COMMIT_MESSAGE" value="ratings" />
+    <MESSAGE value="eslint" />
+    <option name="LAST_COMMIT_MESSAGE" value="eslint" />
   </component>
 </project>
