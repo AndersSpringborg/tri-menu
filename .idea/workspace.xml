@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a08a102-79a5-4153-83b6-e4e8c60b5545" name="Changes" comment="eslint">
+    <list default="true" id="2a08a102-79a5-4153-83b6-e4e8c60b5545" name="Changes" comment="analytics">
+      <change afterPath="$PROJECT_DIR$/src/components/menu/icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/menu/rating-stats.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/menu/rating.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/icon-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/icon-button.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +62,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/components/menu/foodIcon.tsx" />
+      <recent name="$PROJECT_DIR$/src/components/menu/rating.tsx" />
+      <recent name="$PROJECT_DIR$/src/components/menu/ratingStats.tsx" />
       <recent name="$PROJECT_DIR$/src/server/db/menuRepository.ts" />
       <recent name="$PROJECT_DIR$/src/server/api/routers/menu-types.ts" />
     </key>
@@ -135,7 +140,7 @@
       <workItem from="1708705052868" duration="48000" />
       <workItem from="1708705106518" duration="718000" />
       <workItem from="1708708939074" duration="3189000" />
-      <workItem from="1709303669722" duration="13228000" />
+      <workItem from="1709303669722" duration="15991000" />
     </task>
     <task id="LOCAL-00002" summary="ratings">
       <option name="closed" value="true" />
@@ -201,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709327869642</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="analytics">
+      <option name="closed" value="true" />
+      <created>1709328094247</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709328094247</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +240,7 @@
     <MESSAGE value="shadcn" />
     <MESSAGE value="ratings" />
     <MESSAGE value="eslint" />
-    <option name="LAST_COMMIT_MESSAGE" value="eslint" />
+    <MESSAGE value="analytics" />
+    <option name="LAST_COMMIT_MESSAGE" value="analytics" />
   </component>
 </project>

@@ -9,30 +9,18 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 
-const colors = {
-  default: `[#d3d3d3]`,
-  red: `[#e74c3c]`,
-  green: `[#2ecc71]`,
-  blue: `[#2e8fcc]`,
-  pink: `[#d754ba]`,
-  yellow: `[#f0c14b]`,
-  brown: `[#a0522d]`,
-  black: `[#000000]`,
-  white: `[#ffffff]`,
-};
-
-const iconVariants = cva("h-6 w-6 p-1 text-white", {
+const iconVariants = cva("p-2", {
   variants: {
     color: {
-      default: `bg-${colors.default}`,
-      red: `bg-${colors.red}`,
-      green: `bg-${colors.green}`,
-      blue: `bg-${colors.blue}`,
-      pink: `bg-${colors.pink}`,
-      yellow: `bg-${colors.yellow}`,
-      brown: `bg-${colors.brown}`,
-      black: `bg-${colors.black}`,
-      white: `bg-${colors.white}`,
+      default: `border-[#d3d3d3]`,
+      red: `border-[#e74c3c]`,
+      green: `border-[#2ecc71]`,
+      blue: `border-[#2e8fcc]`,
+      pink: `border-[#d754ba]`,
+      yellow: `border-[#f0c14b]`,
+      brown: `border-[#a0522d]`,
+      black: `border-[#000000]`,
+      white: `border-[#ffffff]`,
     },
   },
   defaultVariants: {
@@ -51,24 +39,21 @@ export const IconBadge = ({
   className,
   description,
 }: IconBadgeProps) => {
-  // show description on hover
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            className={cn(iconBorderVariants({ color }), className)}
-            size="icon"
-            variant="ghost"
+            className={cn(iconVariants({ color }), className)}
+            variant="outline"
+            size={"icon"}
           >
             {icon}
             <span className="sr-only">{description}</span>
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <span className="rounded-md bg-black bg-opacity-80 p-1 text-white dark:text-black">
-            {description}
-          </span>
+          <p>{description}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -78,15 +63,15 @@ export const IconBadge = ({
 const iconBorderVariants = cva("rounded-full border border-dashed p-1", {
   variants: {
     color: {
-      default: `border-${colors.default}`,
-      red: `border-${colors.red}`,
-      green: `border-${colors.green}`,
-      blue: `border-${colors.blue}`,
-      pink: `border-${colors.pink}`,
-      yellow: `border-${colors.yellow}`,
-      brown: `border-${colors.brown}`,
-      black: `border-${colors.black}`,
-      white: `border-${colors.white}`,
+      default: `border-[#d3d3d3]`,
+      red: `border-[#e74c3c]`,
+      green: `border-[#2ecc71]`,
+      blue: `border-[#2e8fcc]`,
+      pink: `border-[#d754ba]`,
+      yellow: `border-[#f0c14b]`,
+      brown: `border-[#a0522d]`,
+      black: `border-[#000000]`,
+      white: `border-[#ffffff]`,
     },
   },
   defaultVariants: {
@@ -94,14 +79,29 @@ const iconBorderVariants = cva("rounded-full border border-dashed p-1", {
   },
 });
 
-export const IconBorderBadge = ({ color, icon, className }: IconBadgeProps) => {
+export const IconBorderBadge = ({
+  color,
+  icon,
+  className,
+  description,
+}: IconBadgeProps) => {
   return (
-    <Button
-      className={cn(iconBorderVariants({ color }), className)}
-      variant={"outline"}
-    >
-      {icon}
-    </Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            className={cn(iconBorderVariants({ color }), className)}
+            variant={"outline"}
+            size="icon"
+          >
+            {icon}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{description}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 

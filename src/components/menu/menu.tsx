@@ -2,7 +2,7 @@ import { api } from "~/utils/api";
 import { Spinner } from "~/components/spinner";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CloudIcon, ThumbsDownIcon, ThumbsUpIcon } from "~/components/icons";
+import { CloudIcon } from "~/components/icons";
 import { Progress } from "~/components/ui/progress";
 import {
   Table,
@@ -15,21 +15,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Link from "next/link";
-import { IconBadge, IconBorderBadge } from "~/components/ui/icon-button";
-import { Allergies, FoodType } from "~/server/models/enums";
-import {
-  LucideEgg,
-  LucideFish,
-  LucideMilk,
-  LucideNut,
-  LucideShell,
-  LucideSprout,
-  LucideWheat,
-} from "lucide-react";
-import { toast } from "sonner";
-import { useState } from "react";
-import { ReloadIcon } from "@radix-ui/react-icons";
-import { Skeleton } from "~/components/ui/skeleton";
+import { Rating } from "~/components/menu/rating";
+import { AllergyIcon, Icon } from "~/components/menu/icon";
 
 const average = (arr: number[]): number => {
   if (arr.length === 0) {
@@ -39,75 +26,6 @@ const average = (arr: number[]): number => {
 
   const sum = arr.reduce((acc, num) => acc + num, 0);
   return sum / arr.length;
-};
-
-const FoodIcon = ({ label }: { label: FoodType }) => {
-  switch (label) {
-    case FoodType.Beef:
-      return <IconBorderBadge color={"red"} icon={<span>🥩</span>} />;
-    case FoodType.Vegan:
-      return <IconBorderBadge color={"green"} icon={<span>🌱</span>} />;
-    case FoodType.Vegetarian:
-      return <IconBorderBadge icon={<span>🥕</span>} />;
-    case FoodType.Fish:
-      return <IconBorderBadge color={"blue"} icon={<span>🐟</span>} />;
-    case FoodType.Pork:
-      return <IconBorderBadge color={"pink"} icon={<span>🐷</span>} />;
-    case FoodType.Chicken:
-      return <IconBorderBadge color={"yellow"} icon={<span>🐔</span>} />;
-    case FoodType.Salat:
-      return <IconBorderBadge color={"green"} icon={<span>🥗</span>} />;
-    case FoodType.Turkey:
-      return <IconBorderBadge color={"brown"} icon={<span>🦃</span>} />;
-    default:
-      return null;
-  }
-};
-const AllergyIcon = ({ allergy }: { allergy: Allergies }) => {
-  switch (allergy) {
-    case Allergies.Lactose:
-      return <IconBadge color={"blue"} icon={<LucideMilk />} />;
-    case Allergies.Peanuts:
-    case Allergies.Nuts:
-      return (
-        <IconBadge
-          color={"brown"}
-          icon={<LucideNut />}
-          description={"Contains Nuts"}
-        />
-      );
-    case Allergies.Soy:
-    case Allergies.Celery:
-      return (
-        <IconBadge
-          color={"black"}
-          icon={<LucideSprout />}
-          description={"Contains Celery"}
-        />
-      );
-    case Allergies.Egg:
-      return <IconBadge color={"yellow"} icon={<LucideEgg />} />;
-    case Allergies.Fish:
-      return <IconBadge color={"blue"} icon={<LucideFish />} />;
-    case Allergies.Shellfish:
-      return <IconBadge color={"black"} icon={<LucideShell />} />;
-    case Allergies.Mustard:
-    case Allergies.Molluscs:
-    case Allergies.Lupin:
-    case Allergies.Sulfites:
-    case Allergies.Gluten:
-    case Allergies.Sesame:
-      return (
-        <IconBadge
-          color={"yellow"}
-          icon={<LucideWheat />}
-          description={`Contains ${allergy}`}
-        />
-      );
-
-    default:
-      return null;
-  }
 };
 
 export function Menu({ date }: { date: Date }) {
@@ -176,7 +94,7 @@ export function Menu({ date }: { date: Date }) {
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-2">
-                      <FoodIcon label={item.label} />
+                      <Icon label={item.label} />
                     </div>
                   </TableCell>
                   <TableCell className="text-sm font-medium">
@@ -243,146 +161,4 @@ const dateToWeekdayDanish = (date: Date) => {
     "Lørdag",
   ];
   return weekdays[date.getDay()];
-};
-
-function Rating({ menuId }: { menuId: number }) {
-  const [likeLoading, setLikeLoading] = useState(false);
-  const [dislikeLoading, setDislikeLoading] = useState(false);
-  const utils = api.useUtils();
-
-  const undoAddLike = api.like.addLike.useMutation({});
-  const optimisticAddLike = api.like.addLike.useMutation({
-    onError: (error) => {
-      toast.error("Something went wrong", {
-        description: error.message,
-      });
-    },
-    onSuccess: () => {
-      toast.success("Like saved", {
-        description: new Date().toDateString(),
-        action: {
-          label: "Undo",
-          onClick: () => {
-            undoAddLike.mutate({
-              menuId,
-              like: false,
-            });
-          },
-        },
-      });
-    },
-    onSettled: async () => {
-      setLikeLoading(false);
-      await utils.like.getLikes.invalidate({ menuId });
-    },
-  });
-  const undoAddDislike = api.like.addDislike.useMutation({});
-  const optimisticAddDislike = api.like.addDislike.useMutation({
-    onError: (error) => {
-      toast.error("Something went wrong", {
-        description: error.message,
-      });
-    },
-    onSuccess: (res) => {
-      toast.success("Dislike saved", {
-        description: new Date().toDateString(),
-        action: {
-          label: "Undo",
-          onClick: () => {
-            undoAddDislike.mutate({
-              menuId,
-              dislike: false,
-            });
-          },
-        },
-      });
-    },
-    onSettled: async () => {
-      await utils.like.getLikes.refetch({ menuId });
-      setDislikeLoading(false);
-    },
-  });
-
-  const handleLike = async () => {
-    setLikeLoading(true);
-    void optimisticAddLike
-      .mutateAsync({
-        menuId,
-        like: true,
-      })
-      .then(() => {
-        setLikeLoading(false);
-      });
-  };
-
-  const handleDislike = async () => {
-    setDislikeLoading(true);
-    void optimisticAddDislike
-      .mutateAsync({
-        menuId,
-        dislike: true,
-      })
-      .then(() => {
-        setDislikeLoading(false);
-      });
-  };
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <div className="flex justify-center gap-4">
-        <Button
-          disabled={likeLoading || dislikeLoading}
-          className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600 dark:bg-green-700"
-          onClick={handleLike}
-        >
-          {likeLoading ? (
-            <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-          ) : (
-            <ThumbsUpIcon className="mr-2 h-4 w-4" />
-          )}
-          Like
-        </Button>
-        <Button
-          disabled={likeLoading || dislikeLoading}
-          className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600 dark:bg-red-700"
-          onClick={handleDislike}
-        >
-          {dislikeLoading ? (
-            <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-          ) : (
-            <ThumbsDownIcon className="mr-2 h-4 w-4" />
-          )}
-          Dislike
-        </Button>
-      </div>
-      <RatingStats menuId={menuId} />
-    </div>
-  );
-}
-
-const RatingStats = ({ menuId }: { menuId: number }) => {
-  const { data, error } = api.like.getLikes.useQuery({
-    menuId,
-  });
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  if (!data) {
-    return <Skeleton className={"h-2 w-96"} />;
-  }
-
-  const { likes, dislikes } = data;
-  const noVotes = likes + dislikes === 0;
-
-  return (
-    <div>
-      <Progress
-        className="w-96 bg-red-500"
-        indicatorClassName={"bg-green-500"}
-        value={noVotes ? 50 : (likes / (likes + dislikes)) * 100}
-      />
-    </div>
-  );
 };
